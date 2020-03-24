@@ -1,12 +1,11 @@
 # parameters.json contains azure app id and secrets
-# $ python sample.py parameters.json
+# $ python3 spider.py parameters.json
 import sys  
 import json
 import logging
 import requests
 import msal
 import sqlite3
-
 
 ###############
 ## FUNCTIONS ##
@@ -139,11 +138,11 @@ if not check_sql_progress(cur):
                 u['mail'] = user['mail']
                 u['jobTitle'] = user['jobTitle']
                 members.append(u['mail'])
+                add_teams_users(cur, conn, team, u)
                 
                 if u['mail'] not in users:
                     users.update({u['mail']: u})
                     add_user(cur, conn, u)
-                    add_teams_users(cur, conn, team, u)
 
                                         
                 print('------------------------------------')
@@ -160,4 +159,3 @@ if not check_sql_progress(cur):
         print(result.get("error"))
         print(result.get("error_description"))
         print(result.get("correlation_id"))  # You may need this when reporting a bug
-
