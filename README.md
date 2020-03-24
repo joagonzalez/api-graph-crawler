@@ -1,4 +1,4 @@
-# crawler_page_rank
+# MS Graph API crawler
 Web crawler using page rank algorithms and d3 library
 
 ### Ejecution
