@@ -39,7 +39,7 @@ def add_teams_users(cur, conn, team, user):
     conn.commit()
 
 def connect_sql():
-    conn = sqlite3.connect('spider.sqlite')
+    conn = sqlite3.connect('data/spider.sqlite')
     cur = conn.cursor()
 
     return cur, conn
@@ -65,14 +65,6 @@ def check_sql_progress(cur):
     else :
         print('Database is empty, we can start the crawler.')
         return 0
-
-def insert_row(cur, table, data):
-    pass
-    # elif table == 'teams_users':
-    #     cur.execute('INSERT OR IGNORE INTO teams_users (team_id, user_id) VALUES ( , ?, ? )', ( data[0], data[1] ))
-    # else:
-    #     cur.execute('INSERT OR IGNORE INTO users (user_id, mail, display_name, job_title) VALUES ( , ?, ? )', ( data[0], data[1] ))
-
 
 #############
 ## CROWLER ##
