@@ -1,5 +1,5 @@
 # MS Graph API crawler
-Web crawler using page rank algorithms and d3 library
+MS Graph API crawler using OAuth app tokens and d3 library
 
 ### Ejecution
 Parameter.json file is received via arg as in the example.
