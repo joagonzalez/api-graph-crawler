@@ -39,4 +39,4 @@ Noel Naveda|noel.naveda@newtech.com.ar
 
 ```
 
-![Figura 1](https://github.com/joagonzalez/api_graph_crawler/blob/master/doc/img/graph_teams.png)
+![Figura 1](https://github.com/joagonzalez/api_graph_crawler/blob/master/doc/img/api_graph_crawler.png)
