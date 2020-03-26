@@ -14,8 +14,7 @@ def team_weight(cur, conn, team):
     cur.execute('INSERT OR IGNORE INTO teams (name, team_id) VALUES ( ?, ? )', ( team['displayName'], team['id'] ))
     conn.commit()
 
-cur_teams, conn_teams = connect_sql()
-cur_users, conn_users = connect_sql()
+cur, conn = connect_sql()
 
 ################
 ## JSON MAKER ##
@@ -30,12 +29,12 @@ nodes = list()
 
 fhand.write('spiderJson = {"nodes":[\n')
 
-# NODOS
-#carga teams  
-cur_teams.execute('''SELECT team_id, name 
+# NODES
+# load teams  
+cur.execute('''SELECT team_id, name 
     FROM teams GROUP BY team_id ORDER BY team_id''')
 
-for team in cur_teams :
+for team in cur:
     nodes.append(team)
     if len(nodes) > howmany : break
 
@@ -50,15 +49,15 @@ for team in nodes :
     count = count + 1
     number_teams = count + 1
 
-#carga users
-cur_users.execute('''SELECT user_id, mail 
+# load users
+cur.execute('''SELECT user_id, mail 
     FROM users GROUP BY user_id ORDER BY user_id''')
 
-for user in cur_users :
+for user in cur:
     nodes.append(user)
     if len(nodes) > howmany : break
 
-for user in nodes[number_teams:] :
+for user in nodes[number_teams:]:
     if count > 0 : fhand.write(',\n')
     # print row
     fhand.write('{'+'"weight":'+str(5)+',')
@@ -71,13 +70,13 @@ print('map: ' + str(map))
 
 
 # LINKS
-cur_teams.execute('''SELECT team_id, user_id FROM teams_users''')
+cur.execute('''SELECT team_id, user_id FROM teams_users''')
 fhand.write('],\n"links":[\n')
 
 count = 0
 
-# dict map para crear json
-for team in cur_teams :
+# dict map to build json
+for team in cur:
     if team[0] not in map or team[1] not in map : continue
     if count > 0 : fhand.write(',\n')
     fhand.write('{"source":'+str(map[team[0]])+',"target":'+str(map[team[1]])+',"value":3}')
@@ -85,7 +84,6 @@ for team in cur_teams :
 fhand.write(']};')
 fhand.close()
 
-cur_teams.close()
-cur_users.close()
+cur.close()
 
 print("Open graph.html in a browser to view the visualization")

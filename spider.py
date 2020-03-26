@@ -76,7 +76,6 @@ cur, conn = connect_sql()
 create_schema(cur)
 
 if not check_sql_progress(cur):
-    # main app
     config = load_config()
 
     app = msal.ConfidentialClientApplication(
@@ -143,11 +142,11 @@ if not check_sql_progress(cur):
                 if 'jobTitle' in user and user['jobTitle'] is not None: print('jobTitle: ' + user['jobTitle'])
         
             team.update({'member': members})
-            # puedo ingresar aca a sql para ver miembros tambien?
+            
         print("Listado de users (" + str(len(users)) + "): " + str(json.dumps(users)))
         print("Listado de teams (" + str(len(teams)) + "): " + str(json.dumps(teams)))
 
     else:
         print(result.get("error"))
         print(result.get("error_description"))
-        print(result.get("correlation_id"))  # You may need this when reporting a bug
+        print(result.get("correlation_id"))  
