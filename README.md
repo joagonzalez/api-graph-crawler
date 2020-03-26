@@ -8,7 +8,7 @@ Parameter.json file is received via arg as in the example.
 $ python3 spider.py parameters.json 
 ```
 
-spider.sqlite should not exist in order for the crawler to start.
+spider.sqlite should not exist so the crawler can start.
 
 ### SQL Model
 Tables users, teams and teams_users. Due to users and teams has many-to-many relationship a relation database (teams_users) was created. The way in which  you can query and map this both elements is shown below.
