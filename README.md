@@ -1,6 +1,9 @@
 # MS Graph API crawler
 MS Graph API crawler using OAuth app tokens and d3 library
 
+![Figura 1](https://github.com/joagonzalez/api_graph_crawler/blob/master/doc/img/api_graph_crawler.png)
+
+
 ### Ejecution
 Parameter.json file is received via arg as in the example.
 
@@ -38,5 +41,3 @@ Lucas Machado|Lucas.Machado@newtech.com.ar
 Noel Naveda|noel.naveda@newtech.com.ar
 
 ```
-
-![Figura 1](https://github.com/joagonzalez/api_graph_crawler/blob/master/doc/img/api_graph_crawler.png)
